@@ -216,13 +216,18 @@ Panel {
   implicitWidth: button.implicitWidth
   implicitHeight: button.implicitHeight
 
-  BarIconButton {
+  // A lone icon fills a standard icon slot; with the temperature it is drawn
+  // as a compact text readout (caption font, snug margins).
+  WidgetButton {
     id: button
     anchors.fill: parent
     bar: root.bar
     readonly property bool showTarget: root.powered && root.cooling && !vertical
     text: showTarget ? root.icon + " " + root.degrees(root.target) : root.icon
-    slotSize: Style.bar.iconSlot * (showTarget ? 2.4 : 1)
+    fontSize: showTarget ? Style.font.caption : Style.bar.iconFont
+    horizontalMargin: 4
+    fixedWidth: showTarget || vertical ? -1 : Style.bar.iconSlot
+    fixedHeight: vertical ? Style.bar.iconSlot : -1
     dimmed: !root.powered
     tooltipText: root.opened ? "" : "AC: " + root.statusLine()
     onPressed: function(b) {
