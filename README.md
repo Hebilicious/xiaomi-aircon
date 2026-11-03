@@ -62,8 +62,8 @@ A QR code opens. Scan it with the Mi Home app (Profile > scan icon), using the a
 is paired to. `aircon` reads the AC's address and token from your device list and saves them
 to `~/.config/aircon/config.json` (mode 600). The cloud session isn't kept.
 
-- **Several ACs on the account:** `aircon setup --device "Bedroom AC"` (a name or device id).
-- **Already have the token** (from another extractor): `aircon setup --host 192.168.1.50 --token <32 hex chars>`.
+- **Several ACs on the account:** `aircon setup --device "Main AC"` (a name or device id).
+- **Already have the token** (from another extractor): `aircon setup --host 192.0.2.50 --token <32 hex chars>`.
 
 Keep the token private: anyone on your network who has it can control the AC. If the AC gets
 a new IP address, `aircon` finds it again by device id and updates the config.

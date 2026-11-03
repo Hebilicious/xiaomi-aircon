@@ -14,6 +14,12 @@ runs:
       shell: bash
       run: moon setup
 
+    # Runners ship their own, newer default Rust. Without this, tasks built by different compilers
+    # share target/ and fail with E0514.
+    - name: Use the pinned Rust for every later step
+      shell: bash
+      run: echo "RUSTUP_TOOLCHAIN=$(grep "^rust = " .prototools | cut -d\" -f2)" >> "$GITHUB_ENV"
+
     - name: Show resolved tool versions
       shell: bash
       run: |
