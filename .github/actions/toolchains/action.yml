@@ -20,6 +20,10 @@ runs:
       shell: bash
       run: echo "RUSTUP_TOOLCHAIN=$(grep "^rust = " .prototools | cut -d\" -f2)" >> "$GITHUB_ENV"
 
+    - name: Add clippy to the pinned Rust
+      shell: bash
+      run: rustup component add clippy --toolchain "$RUSTUP_TOOLCHAIN"
+
     - name: Show resolved tool versions
       shell: bash
       run: |
